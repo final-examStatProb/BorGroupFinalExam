@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability and Statistics Concepts</title>
+    <link rel="stylesheet" href="finals.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #00a300;
+        }
+
+        .button-container button {
+            background-color: #00a300;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button-container button:hover {
+            background-color: #007700;
+        }
+
+        .quiz-container {
+            background-color: #e6f5e6;
+            border: 2px solid #00a300;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Probability and Statistics Concepts</h1>
+        <p>Explore Probability, Permutation, and Combination</p>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Quizzes</a></li>
+                <li><a href="group.html">Members</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+            </ul>
+        </nav>
+        <div class="button-container">
+            <button onclick="location.href='#probability'">Probability</button>
+            <button onclick="location.href='#permutation'">Permutation</button>
+            <button onclick="location.href='#combination'">Combination</button>
+            <button onclick="location.href='#central-tendency'">Central Tendency</button>
+            <button onclick="location.href='#counting-principle'">Counting Principle</button>
+        </div>
+    </header>
+    <main>
+        <section id="probability">
+            <h2>Probability</h2>
+            <p><strong>Definition:</strong> Probability is the measure of how likely an event is to occur.</p>
+            <p><strong>Example:</strong> A dice is rolled. What is the probability of getting a 6?</p>
+            <p><em>Solution:</em> There is 1 favorable outcome (rolling a 6) out of 6 possible outcomes. Probability = 1/6 ≈ 16.67%.</p>
+            <!-- Probability Graph -->
+            <div class="chart-container">
+                <h3>Probability Chart</h3>
+                <canvas id="probabilityChart"></canvas>
+            </div>
+        </section>
+        <section id="permutation">
+            <h2>Permutation</h2>
+            <p><strong>Definition:</strong> A permutation is an arrangement of objects in a specific order.</p>
+            <p><strong>Example:</strong> In how many ways can 3 people (A, B, C) be seated in a row?</p>
+            <p><em>Solution:</em> The number of arrangements is 3! = 3 × 2 × 1 = 6.</p>
+            <!-- Permutation Graph -->
+            <div class="chart-container">
+                <h3>Permutation Chart</h3>
+                <canvas id="permutationChart"></canvas>
+            </div>
+        </section>
+        <section id="combination">
+            <h2>Combination</h2>
+            <p><strong>Definition:</strong> A combination refers to selecting items from a group where order does not matter.</p>
+            <p><strong>Example:</strong> How many ways can you select 2 fruits from a basket of 3 (Apple, Banana, Cherry)?</p>
+            <p><em>Solution:</em> The number of combinations is C(3, 2) = 3! / [(2!)(3-2)!] = 3.</p>
+            <!-- Combination Graph -->
+            <div class="chart-container">
+                <h3>Combination Chart</h3>
+                <canvas id="combinationChart"></canvas>
+            </div>
+        </section>
+        <section id="central-tendency">
+            <h2>Measures of Central Tendency (Ungrouped Data)</h2>
+            <p><strong>Definition:</strong> Measures of central tendency describe the central or typical value of a dataset.</p>
+            <p><strong>Example:</strong> Consider the dataset: {2, 4, 6, 6, 8}.</p>
+            <ul>
+                <li><strong>Mean:</strong> (2 + 4 + 6 + 6 + 8) / 5 = 26 / 5 = 5.2</li>
+                <li><strong>Median:</strong> The middle value is 6.</li>
+                <li><strong>Mode:</strong> The most frequent value is 6.</li>
+            </ul>
+            <!-- Central Tendency Graph -->
+            <div class="chart-container">
+                <h3>Central Tendency Chart</h3>
+                <canvas id="centralTendencyChart"></canvas>
+            </div>
+        </section>
+        <section id="counting-principle">
+            <h2>Fundamental Counting Principle</h2>
+            <p><strong>Definition:</strong> The Fundamental Counting Principle is a method to determine the total number of outcomes.</p>
+            <p><strong>Example:</strong> A menu has 3 appetizers and 2 drinks. How many meal combinations are possible?</p>
+            <p><em>Solution:</em> Total combinations = 3 × 2 = 6.</p>
+            <!-- Counting Principle Graph -->
+            <div class="chart-container">
+                <h3>Counting Principle Chart</h3>
+                <canvas id="countingPrincipleChart"></canvas>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Probability and Statistics Concepts. All rights reserved.</p>
+    </footer>
+    <script>
+        // Chart.js configurations for each section
+
+        // Probability Chart
+        new Chart(document.getElementById('probabilityChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Event A', 'Event B', 'Event C'],
+                datasets: [{
+                    data: [30, 50, 20], // Example probability percentages
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        // Permutation Chart
+        new Chart(document.getElementById('permutationChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Case 1', 'Case 2', 'Case 3'],
+                datasets: [{
+                    label: 'Number of Arrangements',
+                    data: [10, 15, 5], // Example permutation data
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                }]
+            },
+            options: { responsive: true, scales: { y: { beginAtZero: true } } }
+        });
+
+        // Combination Chart
+        new Chart(document.getElementById('combinationChart'), {
+            type: 'line',
+            data: {
+                labels: ['Set 1', 'Set 2', 'Set 3'],
+                datasets: [{
+                    label: 'Possible Combinations',
+                    data: [5, 10, 3], // Example combination data
+                    borderColor: '#36A2EB',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    fill: true
+                }]
+            },
+            options: { responsive: true, scales: { y: { beginAtZero: true } } }
+        });
+
+        // Central Tendency Chart
+        new Chart(document.getElementById('centralTendencyChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Mean', 'Median', 'Mode'],
+                datasets: [{
+                    data: [25, 35, 40], // Example central tendency values
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        // Counting Principle Chart
+        new Chart(document.getElementById('countingPrincipleChart'), {
+            type: 'polarArea',
+            data: {
+                labels: ['Step 1', 'Step 2', 'Step 3'],
+                datasets: [{
+                    data: [3, 5, 2], // Example steps in counting principle
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                }]
+            },
+            options: { responsive: true }
+        });
+    </script>
+</body>
+</html>
